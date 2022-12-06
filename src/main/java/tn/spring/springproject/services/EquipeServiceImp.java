@@ -2,6 +2,7 @@ package tn.spring.springproject.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.spring.springproject.entities.Contrat;
 import tn.spring.springproject.entities.Equipe;
@@ -76,6 +77,7 @@ public class EquipeServiceImp implements IEquipeServices{
         equipeRepository.deleteEquipeByNiveau(niveau);
     }
 
+    @Scheduled(cron = "* * * * * *" )
     @Override
     public void faireEvoluerEquipes() {
         List<Equipe> allEquips = equipeRepository.findAll();

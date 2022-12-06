@@ -19,7 +19,7 @@ public class loggingAspect {
         String name = joinPoint.getSignature().getName();
         log.info("added successfuly " + name + " : ");
     }
-    //nesta3mlo haja bel @before w calcul de tempes execution
+
     @Before("execution(* tn.spring.springproject.services.*.*(..))")
     public  void logMethodEntry2(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();

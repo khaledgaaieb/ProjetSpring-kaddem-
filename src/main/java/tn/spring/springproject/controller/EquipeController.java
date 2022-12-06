@@ -61,8 +61,8 @@ public class EquipeController {
         equipeServices.deleteEquipeByNiveau(niveau);
     }
 
-    @GetMapping("evoluer")
+   /* @GetMapping("evoluer")
     public void evoluer(){
          equipeServices.faireEvoluerEquipes();
-    }
+    }*/
 }
