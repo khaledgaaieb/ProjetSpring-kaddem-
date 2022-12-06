@@ -60,4 +60,9 @@ public class EquipeController {
     public void deleteEquipeByNiveau(@PathVariable Niveau niveau){
         equipeServices.deleteEquipeByNiveau(niveau);
     }
+
+    @GetMapping("evoluer")
+    public void evoluer(){
+         equipeServices.faireEvoluerEquipes();
+    }
 }

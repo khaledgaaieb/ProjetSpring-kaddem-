@@ -53,7 +53,7 @@ public class UniversiteServiceImp implements IUniversiteServices{
     }
 
     @Override
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 50000)
     public void sayHello() {
         System.out.println("hello World");
     }

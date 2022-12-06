@@ -2,12 +2,17 @@ package tn.spring.springproject.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.spring.springproject.entities.Contrat;
 import tn.spring.springproject.entities.Etudiant;
 import tn.spring.springproject.repository.ContratRepository;
 import tn.spring.springproject.repository.EtudiantRepository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -113,6 +118,31 @@ public class ContratServiceImp implements IContratServices{
 
         }
         return j;
+    }
+
+    @Scheduled(cron = "* * 13 * * *" )
+    @Override
+    public String retrieveAndUpdateStatusContrat() {
+
+        LocalDate currentDate = LocalDate.now().plusDays(15);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dayAfter15 = currentDate.format(formatter);
+
+        System.out.println(dayAfter15);
+
+        List<Contrat> AllContrat = contratRepository.findAll();
+        AllContrat.forEach(contrat -> {
+            if (contrat.getDateFinContrat().toString().equals(dayAfter15)) {
+                System.out.println("le Contrat ayant l id : "+ contrat.getIdContrat()+ " du specialite " +
+                                contrat.getSpecialite()+" affecté à l'etudiant "
+                        +contrat.getEtudiant()+" se termine dans 15 jours !!" ) ;
+                contrat.setArchive(true);
+                contratRepository.save(contrat);
+
+            }
+        });
+        return "check console" ;
     }
 
 

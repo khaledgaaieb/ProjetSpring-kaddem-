@@ -27,4 +27,6 @@ public interface IEquipeServices {
     List<Equipe> retriveEquipeByNiveauAndThematique(Niveau niveau , String thematique);
 
     void deleteEquipeByNiveau( Niveau niveau);
+
+    void faireEvoluerEquipes();
 }

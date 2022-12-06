@@ -52,5 +52,8 @@ public class ContratController {
         return  contratServices.nbContratsValides(dateD,dateF);
     }
 
-
+    /*@GetMapping("getDateFin")
+    public String retrieveAndUpdateStatusContrat(){
+        return contratServices.retrieveAndUpdateStatusContrat();
+    }*/
 }
